@@ -1,4 +1,4 @@
-export default  [
+export default [
   {
     id: "1",
     title: "Learning Redux Toolkit",
@@ -13,7 +13,7 @@ export default  [
   },
   {
     id: "2",
-    title: "Slices...",
+    title: "Slices",
     content: "The more I say slice, the more I want pizza.",
     reactions: {
       thumbsUp: 0,
