@@ -10,6 +10,4 @@ const data = [
     { firstName: "Dave",lastName: "Black", age: 56 , hobby: "Football"},
     { firstName: "Neils",lastName: "Black",age: 65 , hobby: "Singing"}
   ];
-];
-
 export default data;
