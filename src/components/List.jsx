@@ -1,5 +1,5 @@
 import React from "react";
-import postsData from "../assets/postsData";
+import postsData from "../data/postsData";
 import Item from "./Item";
 
 const List = () => {
@@ -7,7 +7,7 @@ const List = () => {
     <div>
       <h1>list</h1>
       {postsData.map((post) => (
-        <Item key = {post.id} post={post} />
+        <Item key={post.id} post={post} />
       ))}
       ;
     </div>

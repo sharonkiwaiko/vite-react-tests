@@ -1,13 +1,8 @@
 import React from "react";
-//{props.post.title}
-//{props.post.content}
- const Item = (props) => {
+export const SimpleItem = () => {
   return (
     <div>
-      <h1>Title text</h1>
-      <p>content</p>
+      <h1>SimpleItem Component</h1>
     </div>
   );
 };
-
-export default Item;

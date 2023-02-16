@@ -1,5 +1,5 @@
 //import { useId },React from "react";
-import users0 from "../assets/users0";
+import users0 from "../data/users0";
 //const idkey = useId();
 
 const usdata = users0.map((user) => {
