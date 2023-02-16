@@ -5,11 +5,13 @@ import Item from "./Item";
 const List = () => {
   return (
     <div>
-      <h1>list</h1>
+      <hr />
+      <h1>
+        <u>list</u>
+      </h1>
       {postsData.map((post) => (
         <Item key={post.id} post={post} />
       ))}
-      ;
     </div>
   );
 };

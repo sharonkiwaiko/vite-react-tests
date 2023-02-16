@@ -1,8 +1,5 @@
-//import { useId },React from "react";
-import users0 from "../data/users0";
-//const idkey = useId();
-
-const usdata = users0.map((user) => {
+import users from "../data/users_data_array";
+const usersListDiv = users.map((user) => {
   console.log(user.firstName);
   return (
     <div key={user.key}>
@@ -10,13 +7,14 @@ const usdata = users0.map((user) => {
     </div>
   );
 });
-
 export const UsersList = () => {
   return (
     <div>
-      <h1>UsersList</h1>
-      <h1>============</h1>
-      <div>{usdata}</div>
+      <hr />
+      <h1>
+        <u>UsersList</u>
+      </h1>
+      <div>{usersListDiv}</div>
     </div>
   );
 };

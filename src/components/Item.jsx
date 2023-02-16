@@ -1,9 +1,7 @@
-import React from "react";
-
 const Item = (props) => {
   return (
     <div>
-      <h1>{props.post.title}</h1>
+      <h2>{props.post.title}</h2>
       <p>{props.post.content}</p>
     </div>
   );
