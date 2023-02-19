@@ -1,5 +1,4 @@
-import React from "react";
-import postsData from "../data/postsData";
+import postsData from "../../data/postsData";
 import Item from "./Item";
 
 const List = () => {
@@ -7,7 +6,7 @@ const List = () => {
     <div>
       <hr />
       <h1>
-        <u>list</u>
+        <u>list 1</u>
       </h1>
       {postsData.map((post) => (
         <Item key={post.id} post={post} />
