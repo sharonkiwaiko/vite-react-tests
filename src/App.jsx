@@ -1,9 +1,8 @@
 import "./App.css";
 import { SimpleItem } from "./components/SimpleItem";
 import List from "./components/List";
-import { UsersList } from "./components/UsersList";
-
-import ImportExamples from "./components/import_examples/ImportExamples";
+import { UsersList01 } from "./components/UsersList01";
+import { UsersList02 } from "./components/UsersList02";
 
 import { FindMethod } from "./components/import_examples/TestArray";
 
@@ -27,8 +26,8 @@ function App() {
       */}
 
       <List />
-      <UsersList />
-      <ImportExamples />
+      <UsersList01 />
+      <UsersList02 />
       {/* 
 
      
