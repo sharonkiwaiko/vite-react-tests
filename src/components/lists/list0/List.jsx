@@ -1,4 +1,4 @@
-import postsData from "../../data/postsData";
+import postsData from "../../../data/postsData";
 
 const List = () => {
   return (
@@ -8,8 +8,8 @@ const List = () => {
         <u>list 0 </u>
       </h1>
       {postsData.map((post) => (
-        <div>
-          {post.id} ) {post.title}: {post.content}
+        <div key={post.id}>
+          {post.id} : {post.title}: {post.content}
         </div>
       ))}
     </div>

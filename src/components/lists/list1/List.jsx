@@ -1,4 +1,4 @@
-import postsData from "../../data/postsData";
+import postsData from "../../../data/postsData";
 import Item from "./Item";
 
 const List = () => {
