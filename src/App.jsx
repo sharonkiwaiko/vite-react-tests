@@ -1,7 +1,15 @@
 import "./App.css";
-import CourseGoalList from "./components/example/style/goals01/GoalsApp";
+
+
+
+import WebsiteLogEnd from "./components/WebsiteLoggingEnd/WebsiteLogEnd";
+
 {
   /*
+  import WebsiteLog from "./components/WebsiteLog/WebsiteLog";
+import UsersComponent from "./components/component_users/UsersComponent";
+
+import CourseGoalList from "./components/example/style/goals01/GoalsApp";
 
 import Expenses from "./components/expense03/Expenses/ExpensesStart";
 import Expenses from "./components/expense02_state_events/Expenses/Expenses";
@@ -21,13 +29,16 @@ import UsItm from "./components/UsItm";
 function App() {
   return (
     <div className="App">
+      
+<WebsiteLog/>
       {/* THIS ONE IS A VALID COMMENT */}
       {/* SIMPLE JSX  
        <h1>____________________________________________</h1>
       */}
-      <CourseGoalList />
 
       {/* 
+      <UsersComponent />
+       <CourseGoalList />
      <Expenses />
       <List0 />
       <List1 />

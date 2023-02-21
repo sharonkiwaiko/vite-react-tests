@@ -34,7 +34,6 @@ const App = () => {
       <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
     );
   }
-
   return (
     <div>
       <section id="goal-form">
@@ -43,12 +42,12 @@ const App = () => {
       <section id="goals">
         {content}
         {/* {courseGoals.length > 0 && (
-          <CourseGoalList
-            items={courseGoals}
-            onDeleteItem={deleteItemHandler}
-          />
-        ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-        } */}
+        <CourseGoalList
+          items={courseGoals}
+          onDeleteItem={deleteItemHandler}
+        />
+      ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+      } */}
       </section>
     </div>
   );
