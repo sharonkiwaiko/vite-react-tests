@@ -1,8 +1,6 @@
 import "./App.css";
-
-
-
-import WebsiteLogEnd from "./components/WebsiteLoggingEnd/WebsiteLogEnd";
+import { AuthContextProvider } from './components/WebsiteLogEnd/store/auth-context';
+import WebsiteLogEnd from "./components/WebsiteLogEnd/WebsiteLogEnd";
 
 {
   /*
@@ -28,10 +26,11 @@ import UsItm from "./components/UsItm";
 
 function App() {
   return (
+    <AuthContextProvider>
     <div className="App">
-      
-<WebsiteLog/>
+      <WebsiteLogEnd />
       {/* THIS ONE IS A VALID COMMENT */}
+      {/*  */}
       {/* SIMPLE JSX  
        <h1>____________________________________________</h1>
       */}
@@ -50,6 +49,7 @@ function App() {
        <ExpenseItem />
       */}
     </div>
+    </AuthContextProvider>
   );
 }
 

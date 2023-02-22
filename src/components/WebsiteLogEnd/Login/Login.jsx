@@ -8,7 +8,7 @@ import React, {
 
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
-import AuthContext from "../../store/auth-context";
+import AuthContext from "../store/auth-context";
 import Input from "../UI/Input/Input";
 import classes from "./Login.module.css";
 
@@ -100,12 +100,16 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+   
     if (formIsValid) {
+      console.log("Login > submitHandler > formIsValid! ");
       authCtx.onLogin(emailState.value, passwordState.value);
     } else if (!emailIsValid) {
+      console.log("Login > submitHandler > formIsValid ? BAD EMAIL");
       emailInputRef.current.focus();
     } else {
       passwordInputRef.current.focus();
+      console.log("Login > submitHandler > formIsValid ? BAD password");
     }
   };
 
