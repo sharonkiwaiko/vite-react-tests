@@ -1,10 +1,9 @@
 import "./App.css";
-import { AuthContextProvider } from './components/WebsiteLogEnd/store/auth-context';
-import WebsiteLogEnd from "./components/WebsiteLogEnd/WebsiteLogEnd";
 
+import Ex_useMemo from "./components/useMemo_ex/Ex_useMemo";
 {
   /*
-  import WebsiteLog from "./components/WebsiteLog/WebsiteLog";
+import WebsiteLog from "./components/WebsiteLog/WebsiteLog";
 import UsersComponent from "./components/component_users/UsersComponent";
 
 import CourseGoalList from "./components/example/style/goals01/GoalsApp";
@@ -26,16 +25,14 @@ import UsItm from "./components/UsItm";
 
 function App() {
   return (
-    <AuthContextProvider>
     <div className="App">
-      <WebsiteLogEnd />
       {/* THIS ONE IS A VALID COMMENT */}
-      {/*  */}
       {/* SIMPLE JSX  
        <h1>____________________________________________</h1>
       */}
-
+      <Ex_useMemo />
       {/* 
+      
       <UsersComponent />
        <CourseGoalList />
      <Expenses />
@@ -49,7 +46,6 @@ function App() {
        <ExpenseItem />
       */}
     </div>
-    </AuthContextProvider>
   );
 }
 
