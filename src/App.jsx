@@ -20,6 +20,10 @@ import List3 from "./components/lists/list3/List";
 import { FindMethod } from "./components/array/TestArray";
 import { ReducerApp } from "./code/reducer/useReducer_ex";
 import UsItm from "./components/UsItm";
+
+import ShowHideUsers from "./examples/ShowHideUsers/ShowHideUsers";
+import UserFinder from "./examples/ShowHideUsers/MainUserFinder";
+
  */
 }
 
@@ -29,10 +33,15 @@ function App() {
       {/* THIS ONE IS A VALID COMMENT */}
       {/* SIMPLE JSX  
        <h1>____________________________________________</h1>
-      */}
-      <Ex_useMemo />
-      {/* 
       
+   
+
+ <UserFinder />
+
+
+
+
+      <Ex_useMemo />
       <UsersComponent />
        <CourseGoalList />
      <Expenses />
