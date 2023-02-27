@@ -1,3 +1,5 @@
+
+
 exports.signup = (req, res) => {
   const newUser = {
     email: req.body.email,
