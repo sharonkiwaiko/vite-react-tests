@@ -6,6 +6,7 @@ const expresss = require("express");
 const app = expresss();
 short way:
 */
+const db = admin.firestore();
 const app = require("express")();
 const firebase = require("firebase");
 
@@ -22,8 +23,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 app.get("/screams", (req, res) => {
+  /*
   admin
     .firestore()
+    */
+  db
     .collection("screams")
     .orderBy("createdAt", "desc")
     .get()
@@ -50,8 +54,11 @@ app.post("/scream", (req, res) => {
     createdAt: new Date().toISOString(),
     //createdAt: admin.firestore.TimeStamp.fromDate(new Date()),
   };
+  /*
   admin
     .firestore()
+    */
+  db
     .collection("screams")
     .add(newScream)
     .then((doc) => {
@@ -63,7 +70,7 @@ app.post("/scream", (req, res) => {
     });
 });
 
-exports.api = functions.https.onRequest(app);
+//exports.api = functions.https.onRequest(app);
 
 // u can try better region
 //exports.api = functions.region("europe-west1").https.onRequest(app);
@@ -76,16 +83,27 @@ app.post("/signup", (req, res) => {
     handle: req.body.handle,
   };
   //TODO validate data
-  firebase
+  db.doc(`/users/`${newUser.handle}`).get()
+  .then(doc => {
+  if(doc.exists){
+  return res.status(400).json({handle:'this handle is already taken'})
+  } else {
+  return firebase
+  /////
     .auth()
-    .createUserWithEmaiAndPassword(newUser.email, newUser.password)
-    .then((data) => {
-      return res
-        .status(201)
-        .json({ message: `iaer ${data.user.uid} signed up successsfully` });
+    .createUserWithEmaiAndPassword(newUser.email, newUser.password);
+    }
     })
-    .catch((err) => {
+    .then(data => {
+    return data.user.getIdToken()
+    })
+    .then(token => {
+     return res.status(201).json({token});
+    })
+      .catch((err) => {
       console.error(err);
       return res.status(500).json({ error: err.code });
     });
+    
+    exports.api = functions.region("europe-west1").https.onRequest(app);
 });
