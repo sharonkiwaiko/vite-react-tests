@@ -83,6 +83,7 @@ app.post("/signup", (req, res) => {
     handle: req.body.handle,
   };
   //TODO validate data
+  let token,userId;
   db.doc(`/users/`${newUser.handle}`).get()
   .then(doc => {
   if(doc.exists){
@@ -95,10 +96,22 @@ app.post("/signup", (req, res) => {
     }
     })
     .then(data => {
+    userId = data.user.uid;
     return data.user.getIdToken()
     })
-    .then(token => {
-     return res.status(201).json({token});
+    .then(idToken => {
+    token=idToken;
+    //  return res.status(201).json({token});
+    const userCredantials = {
+    handle:newUser.handle,
+    email:newUser.email,
+    createdAt: new Date().toISOString(),
+    userId
+    }
+    return db.doc(`/users/${newUser.handle}`).set(userCredentials);
+     })
+     .then((data)=>{
+    return res.status(201).json({token});
     })
       .catch((err) => {
       console.error(err);
