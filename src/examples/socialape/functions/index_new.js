@@ -4,13 +4,7 @@ const {getAllScreams}= require('./handlers/screams')
 
 
 
-admin.initializeApp();
-/*
-const expresss = require("express");
-const app = expresss();
-short way:
-*/
-const db = admin.firestore();
+
 const app = require("express")();
 const firebase = require("firebase");
 
@@ -26,29 +20,12 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-app.get("/screams", (req, res , next) => {
-  /*
-  admin
-    .firestore()
-    */
-  db
-    .collection("screams")
-    .orderBy("createdAt", "desc")
-    .get()
-    .then((data) => {
-      let screams = [];
-      data.forEach((doc) => {
-        screams.push({
-          screamId: doc.id,
-          body: doc.data().body,
-          userHandle: doc.data().userHandle,
-          createdAt: doc.data().createdAt,
-        });
-      });
-      return res.json(screams);
-    })
-    .catch((err) => console.error(err));
-});
+//scream routes
+app.get("/screams", getAllScreams)
+  
+
+
+
 // https://baseurl.com/api/
 
 ///////////////////////////////////////////////////////////////////////
