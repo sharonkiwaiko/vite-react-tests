@@ -1,5 +1,6 @@
 
 const{db} = require('../util/admin')
+const{validateSignupData,validateLoginData} = require('../util/validators')
 const firebase = require("firebase");
 config = require("../util/config");
 firebase.initializeApp(config);
@@ -10,6 +11,9 @@ exports.signup = (req, res) => {
     confirmPassword: req.body.confirmPassword,
     handle: req.body.handle,
   };
+  const {valid, errors} = validateSignupData(newUser)
+  if(!valid) return res.status(400).json(errors);
+  
   let errors = {};
   if(isEmpty(newUser.email)){
   errors.email = 'Email must not be empty'
@@ -62,12 +66,21 @@ exports.signup = (req, res) => {
        } else {
       return res.status(500).json({ error: err.code });
     }
-    ///////////////////////////////////////////////////////////////
+   
+   
+   
+   ///////////////////////////////////////////////////////////////
 exports.login =(req, res) => {
       const user = {
       email:req.body.email,
       password:req.body.password
         }
+        
+        
+         const {valid, errors} = validateLoginData(user)
+  if(!valid) return res.status(400).json(errors)
+  
+  
     let errors = {};
     if(isEmpty(user.email)) errors.email =  'must not be empty';
     if(isEmpty(user.password)) errors.password =  'must not be empty';
