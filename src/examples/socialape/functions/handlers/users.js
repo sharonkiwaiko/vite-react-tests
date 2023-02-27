@@ -4,6 +4,9 @@ const{validateSignupData,validateLoginData} = require('../util/validators')
 const firebase = require("firebase");
 config = require("../util/config");
 firebase.initializeApp(config);
+
+
+//////////////////////////////////////////////////////////////////////////////
 exports.signup = (req, res) => {
   const newUser = {
     email: req.body.email,
@@ -96,4 +99,15 @@ exports.login =(req, res) => {
        return res.status(403).json({general:'wrong credentials, please try again'});
        } else return res.status(500).json({error:err.code});
        });
-    }
+    };
+    
+    
+    
+    //////////////////////////////////////////////////////////////////////////////
+    exports.uploadImage = (req, res) => {
+const BusBoy = require('busboy');
+const path =  require('path');
+const os =  require('os');
+const fs =  require('fs');
+BusBoy = new BusBoy({heade})>>>>>>>>>>>>>>
+};
