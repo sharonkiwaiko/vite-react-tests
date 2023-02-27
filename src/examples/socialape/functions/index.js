@@ -164,8 +164,11 @@ app.post("/signup", (req, res) => {
      return res.json({token});
      })
      .catch(err => {
-      console.error(err)
-      return res.status(500).json({error:err.code});
+      console.error(err);
+      if(err.code === 'auth/wrong-password')
+      {
+       return res.status(403).json({general:'wrong credentials, please try again'});
+       } else return res.status(500).json({error:err.code});
        });
     });
     
