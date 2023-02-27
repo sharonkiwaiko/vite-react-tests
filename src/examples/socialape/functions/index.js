@@ -74,6 +74,17 @@ app.post("/scream", (req, res) => {
 
 // u can try better region
 //exports.api = functions.region("europe-west1").https.onRequest(app);
+const isEmail = (email) => {
+  const regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+ if(email.match(regex)) return true;
+   else return false;
+  
+}
+const isEmpty = (string) => {
+  if(string.trim() === '') return true;
+  else return false;
+}
+
 //signup route
 app.post("/signup", (req, res) => {
   const newUser = {
@@ -82,7 +93,21 @@ app.post("/signup", (req, res) => {
     confirmPassword: req.body.confirmPassword,
     handle: req.body.handle,
   };
+  let errors = {};
+  if(isEmpty(newUser.email)){
+  errors.email = 'Email must not be empty'
+  } else if(!isEmail(newUser.email)){
+   errors.email = 'Email must be a valid email address'
+  }
+  
+  if(isEmpty(newUser.password)) errors.password =  'password must not be empty'
+  if(newUser.password != newUser.confirmPassword errors.confirmPassword =  'passwords must match'
+  if(isEmpty(newUser.handle)) errors.handle =  'must not be empty'
+  
+  if(Object.keys(errors).length>0) return res.status(400).json(errors);
+  // miss a key will trigger unexpected error we dont cover
   //TODO validate data
+  ////////////////////////////////////////
   let token,userId;
   db.doc(`/users/`${newUser.handle}`).get()
   .then(doc => {
@@ -121,5 +146,28 @@ app.post("/signup", (req, res) => {
       return res.status(500).json({ error: err.code });
     });
     
+    //signup login
+    app.post("/login", (req, res) => {
+      const user = {
+      email:req.body.email,
+      password:req.body.password
+        }
+    let errors = {};
+    if(isEmpty(user.email)) errors.email =  'must not be empty';
+    if(isEmpty(user.password)) errors.password =  'must not be empty';
+    if(Object.keys(errors).length>0) return res.status(400).json(errors);
+    firebase.auth().signInWithEmailAndPassword(user.email,user.password)
+    then(data =>{
+    return data.user.getIdToken()
+    })
+    .then (token => {
+     return res.json({token});
+     })
+     .catch(err => {
+      console.error(err)
+      return res.status(500).json({error:err.code});
+       });
+    });
+    
     exports.api = functions.region("europe-west1").https.onRequest(app);
-});
+//});
