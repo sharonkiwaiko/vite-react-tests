@@ -30,3 +30,15 @@ errors,
   valid: Object.keys(errors).length === 0 ? true : false
 }
 }
+
+exports.validateLoginData = (data) => {
+let errors = {};
+    if(isEmpty(user.email)) errors.email =  'must not be empty';
+    if(isEmpty(user.password)) errors.password =  'must not be empty';
+    
+ // if(Object.keys(errors).length>0) return res.status(400).json(errors);
+  return{
+errors,
+  valid: Object.keys(errors).length === 0 ? true : false
+}
+}
